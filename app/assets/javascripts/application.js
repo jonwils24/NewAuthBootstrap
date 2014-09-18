@@ -13,3 +13,34 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require bootstrap
+
+$(document).ready(function() {
+  $(".has-tooltip").tooltip();
+  
+  $('body').scrollspy({ target: '.navbar-scroll' });
+  
+  $("#contact-form-button").on("click", function () {
+    var haveError = false;
+    $(".alert").remove();
+    
+    $(".contact-form .form-group").each(function() {
+      var $group = $(this);
+      $group.removeClass("has-warning has-error has-success");
+      if ($group.find("input").val().length === 0) {
+        $group.addClass("has-error");
+        haveError = true;
+      } else {
+        $group.addClass("has-success");
+      }
+    });
+    
+    if (haveError) {
+      $(".container").prepend(
+        "<div class='alert alert-danger' role='alert'>You have an error</div>");
+    } else {
+      $(".container").prepend(
+        "<div class='alert alert-success' role='alert'>Great Success!</div>");
+    }
+  });
+});

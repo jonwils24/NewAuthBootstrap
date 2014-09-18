@@ -11,3 +11,18 @@
  *= require_self
  *= require_tree .
  */
+
+@import "variables";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+.body {
+  position: relative;
+}
+
+#home-nav-bar {
+  position: fixed;
+}
+
+.dropdown-menu {
+  float: right;
+}
